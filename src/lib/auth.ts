@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { Role } from "./types";
 
-const TOKEN_NAME = "taskassigner_token";
+const TOKEN_NAME = "workloom_token";
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
 
 export type SessionUser = {

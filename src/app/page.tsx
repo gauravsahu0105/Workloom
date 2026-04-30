@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-20">
       <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-8">
-        <h1 className="text-3xl font-bold text-slate-100">TaskAssigner</h1>
+        <h1 className="text-3xl font-bold text-slate-100">Workloom</h1>
         <p className="mt-3 max-w-2xl text-slate-300">
           Create projects, manage team members, assign tasks, and track progress with role-based access
           (Admin/Member).

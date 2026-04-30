@@ -1,24 +1,20 @@
 # Workloom
-A collaborative team task management platform where admins create projects, manage members, assign prioritized tasks, and track delivery progress through real-time status and overdue analytics, while members focus on and update only their assigned work.
-=======
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-=======
-# TaskAssigner
 
-Role-based project and task management app (Admin/Member) with:
+A collaborative team task management platform where admins create projects, manage members, assign prioritized tasks, and track delivery progress through status and overdue analytics, while members focus on and update only their assigned work.
+
+## Features
 
 - Signup/Login authentication
-- Project + team management
-- Task creation and status tracking
-- Task assignment and priority (LOW, MEDIUM, HIGH)
-- Dashboard metrics (total/in-progress/completed/overdue)
-- Tasks per user analytics
+- Project and team management
+- Task assignment, status tracking, and priority (LOW, MEDIUM, HIGH)
+- Dashboard metrics (total, in-progress, completed, overdue)
+- Tasks-per-user analytics
 
 ## Tech Stack
 
 - Next.js 14 (App Router)
 - Prisma ORM
-- SQLite (default local DB)
+- PostgreSQL (production) / SQLite (local fallback)
 - JWT auth (HTTP-only cookie)
 
 ## Local Setup
@@ -51,31 +47,23 @@ Open [http://localhost:3000](http://localhost:3000), then go to `/dashboard`.
 
 ## Role-Based Access
 
-- `ADMIN`: create projects and add members to projects.
-- `ADMIN`: remove members, assign tasks, and manage task details.
-- `MEMBER`: view/update assigned tasks only.
+- `ADMIN`: create projects, add/remove members, assign tasks, and manage task details.
+- `MEMBER`: view and update only assigned tasks.
 
 ## Railway Deployment
 
-1. Create a Railway project and deploy this repo.
-2. Set environment variables:
-   - `JWT_SECRET` (required)
-   - `DATABASE_URL` (Railway Postgres connection string or other SQL DB)
-3. For Postgres, update `prisma/schema.prisma` datasource provider to `postgresql`.
-4. Run migration command in Railway:
+1. Create a Railway project and connect this repo.
+2. Add a PostgreSQL service in Railway.
+3. Set app service variables:
+   - `DATABASE_URL` (reference to Postgres `DATABASE_URL`)
+   - `JWT_SECRET` (secure random value)
+4. Ensure `prisma/schema.prisma` datasource provider is `postgresql`.
+5. Set build/start commands:
 
 ```bash
-npx prisma db push
-```
+# Build command
+npm install && npx prisma db push && npm run build
 
-5. Set start command:
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-```bash
-npm run start
+# Start command
+npm run start -- -p $PORT
 ```
