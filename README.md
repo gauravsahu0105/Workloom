@@ -53,7 +53,7 @@ Open [http://localhost:3000](http://localhost:3000), then go to `/dashboard`.
 ## Railway Deployment
 
 1. Create a Railway project and connect this repo.
-2. Add a PostgreSQL service in Railway.
+2. Add a PostgreSQL service in the Railway.
 3. Set app service variables:
    - `DATABASE_URL` (reference to Postgres `DATABASE_URL`)
    - `JWT_SECRET` (secure random value)
